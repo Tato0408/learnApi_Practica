@@ -83,4 +83,10 @@ public class CategoryService {
         objEntity.setFechaCreacion(json.getFechaCreacion());
         return objEntity;
     }
+
+    public Page<CategoryDTO> getAllCategories(int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);// Creando la página y diciendo cuanta es la capacidad que va a llegar a tener
+        Page<CategoryEntity> pageEntity = repo.findAll(pageable);// Buscando los registros en formato de pagina, no de lista
+        return pageEntity.map(this::convertirADTO);
+    }
 }
