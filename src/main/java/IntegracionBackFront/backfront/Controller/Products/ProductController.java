@@ -91,7 +91,7 @@ public class ProductController {
         }
         catch (ExceptionColumnDuplicate e){
             return ResponseEntity.status(HttpStatus.CONFLICT).body(
-                    Map.of("error", "Datos duplicados","campo", e.getColumnDuplicate())
+                    Map.of("error", "Datos duplicados","campo", e.getMessage())
             );
         }
     }
